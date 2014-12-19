@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://research.sun.com/wadl/2006/10">
+    <doc xmlns:jersey="http://jersey.dev.java.net/" jersey:generatedBy="Jersey: 1.1.4.1 11/24/2009 01:30 AM"/>
+    <resources base="http://dnbdirect-api.dnb.com/DnBAPI-11/rest">
+        <resource path="/">
+            <resource path="referenceData">
+                <method name="GET" id="GetAdvancedSearchLookups">
+                    <response>
+                        <representation mediaType="application/json;charset=UTF-8"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="company">
+                <resource path="{unique_id}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                    <method name="GET" id="getCompanyDetail">
+                        <request>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="view"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="{unique_id}/optional">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                    <method name="POST" id="getCompanyDetailOptionalData">
+                        <request>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{unique_id}/financial">
+                    <resource path="/summary">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                        <method name="GET" id="getCompanyFinancialSummary">
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/detail">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                        <method name="GET" id="getCompanyFinancialDetail">
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                </resource>
+                <resource path="/familytree/{unique_id}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                    <method name="POST" id="getFamilyTree">
+                        <request>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/findcompanycleansematch">
+                    <method name="POST" id="findCompanyCleanseMatch">
+                        <request>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{unique_id}/news">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                    <method name="GET" id="GetCompanyNews">
+                        <request>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="start_date"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="end_date"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="filter"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{unique_id}/competitors">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                    <method name="GET" id="findCompetitorsByCompanyId">
+                        <request>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="top_competitor"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{unique_id}/comparisonData">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                    <method name="GET" id="getCompanyComparisonData">
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{unique_id}/market">
+                    <resource path="/data">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                        <method name="GET" id="GetCompanyMarketData">
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/analysis_report">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_id"/>
+                        <method name="GET" id="GetMarketAnalysisReport">
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                </resource>
+                <resource path="/refresh">
+                    <resource path="/companyList">
+                        <method name="GET" id="GetCompanyRefreshByCompanyList">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="unique_id"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                        <method name="POST" id="GetCompanyRefreshByCompanyList">
+                            <request>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/date/{refreshed_since_date}">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="refreshed_since_date"/>
+                        <method name="GET" id="GetCompanyRefreshByDate">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="page_number"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                </resource>
+            </resource>
+            <resource path="person">
+                <resource path="{unique_company_id}/{co_official_id}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="unique_company_id"/>
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="template" name="co_official_id"/>
+                    <method name="GET" id="getPersonDetail">
+                        <request>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="connect_mail"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="convert_currency_to"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="view"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+            </resource>
+            <resource path="industry">
+                <resource path="/{dnb_industry_code}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="template" name="dnb_industry_code"/>
+                    <method name="GET" id="GetIndustry">
+                        <request>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="chapter_name"/>
+                        </request>
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{dnb_industry_code}/dnb">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="template" name="dnb_industry_code"/>
+                    <method name="GET" id="GetDnBIndustry">
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/{dnb_industry_code}/call_prep">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="template" name="dnb_industry_code"/>
+                    <method name="GET" id="GetCallPrepSheet">
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+            </resource>
+            <resource path="user">
+                <resource path="/credits">
+                    <method name="GET" id="GetUserCredits">
+                        <response>
+                            <representation mediaType="application/json;charset=UTF-8"/>
+                        </response>
+                    </method>
+                </resource>
+            </resource>
+            <resource path="search">
+                <resource path="/company">
+                    <resource path="/">
+                        <resource path="{keyword}">
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="keyword"/>
+                            <method name="GET" id="findCompanyByKeyword">
+<request>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_from"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_to"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="search_by"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="return_search_navigation"/>
+</request>
+<response>
+    <representation mediaType="application/json;charset=UTF-8"/>
+</response>
+                            </method>
+                            <method name="POST" id="findCompanyByKeywordJSONRequest">
+<request>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_from"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_to"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="search_by"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="return_search_navigation"/>
+    <representation mediaType="application/json;charset=UTF-8"/>
+</request>
+<response>
+    <representation mediaType="application/json;charset=UTF-8"/>
+</response>
+                            </method>
+                        </resource>
+                    </resource>
+                    <resource path="/advanced/">
+                        <method name="POST" id="advancedCompanySearch">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="return_search_navigation"/>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                        <resource path="optional">
+                            <method name="POST" id="advancedCompanySearchOptionalData">
+<request>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="return_search_navigation"/>
+    <representation mediaType="application/json;charset=UTF-8"/>
+</request>
+<response>
+    <representation mediaType="application/json;charset=UTF-8"/>
+</response>
+                            </method>
+                        </resource>
+                    </resource>
+                    <resource path="/basic/">
+                        <resource path="{keyword}">
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="keyword"/>
+                            <method name="GET" id="basicSearch">
+<request>
+    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="limit"/>
+</request>
+<response>
+    <representation mediaType="application/json;charset=UTF-8"/>
+</response>
+                            </method>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource path="/person">
+                    <resource path="/{keyword}">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="keyword"/>
+                        <method name="GET" id="findPersonByKeyword">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_from"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_to"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="return_search_navigation"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                        <method name="POST" id="findPersonByKeywordWithSearchNavigationAndNonMarketableOptions">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_from"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:long" style="query" name="duns_to"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="return_search_navigation"/>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/advanced">
+                        <method name="POST" id="advancedPersonSearch">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="hit_offset"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="max_records"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<representation mediaType="application/json"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                </resource>
+                <resource path="/industry">
+                    <resource path="/state/{state_id}">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="state_id"/>
+                        <method name="GET" id="GetIndustryForState">
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/province/{province_id}">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="province_id"/>
+                        <method name="GET" id="GetIndustryForProvince">
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/{keyword}">
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="keyword"/>
+                        <method name="GET" id="findIndustryByKeyword">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="premium_industry_only"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                        <method name="POST" id="findIndustryByKeywordJSONRequest">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:boolean" style="query" name="premium_industry_only"/>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                    <resource path="/advanced">
+                        <method name="POST" id="advancedIndustrySearch">
+                            <request>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="sort_direction"/>
+<param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="order_by"/>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </request>
+                            <response>
+<representation mediaType="application/json;charset=UTF-8"/>
+                            </response>
+                        </method>
+                    </resource>
+                </resource>
+            </resource>
+        </resource>
+    </resources>
+</application>

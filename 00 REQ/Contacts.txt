@@ -1,0 +1,51 @@
+job url = oDesk https://www.odesk.com/jobs/~01ae88d8ab3b454dbb
+
+==== client
+oDesk client =  Lagon Business Development / Eran Lagon (lagon)
+skype   = eranlagon /  Eran Lagon
+
+
+====== 
+D&B
+Application:Pomti
+Key: 2wepuynqa2knjssjvpmy49hd  / dn6hbdfptjt9wrxt5rssmk9m
+For REST Calls please use the following Username and Password.
+Username : sandboxAPI
+Password : DnBD1rect
+
+FTP ==============
+server: pomti.com
+port: 21
+user: userpomti
+pass: goodVibes3
+path: /duns
+
+MySQL =================
+db/user: drupalbusinessdb
+pass: goodVibes3
+Host Name: drupalbusinessdb.db.9044772.hostedresource.com
+	https://p3nlmysqladm001.secureserver.net/nl50/1741/index.php
+
+=============     D&B key real
+API Production Key is: y435fs2zq7tg9wg85duf234v
+Username: api7344
+Password:  welcome
+
+http://dnbdirect-api.dnb.com/DnBAPI-12/dnbAPI/dnbAPI.wsdl.
+http://dnbdirect-api.dnb.com/DnBAPI-12/rest/application.wadl.
+
+
+
+
+
+======================
+ api key = rt5fdv2hufsqeb9nhyj3uf96
+
+ http://developer.hoovers.com
+ http://developer.hoovers.com/page/docs
+
+ FindCompetitorsByCompanyId 
+
+= ============= dnb see api rest docs  +===============+++++++= very important
+http://dnbdirectapps.com/docs/rest
+http://dnbdirectapps.com/docs/soap

@@ -1,0 +1,700 @@
+<html>
+<head>
+    <title>API Sample Code</title>
+    <style type="text/css">
+        ul {
+            margin: 0;
+        }
+        li {
+            list-style-type: none;
+        }
+        ul li input {
+            margin-right: 10px;
+        }
+        ul.auth li label {
+            font-style: italic;
+            color: #3333CC;
+        }
+        ul.user li {
+            margin: 0;
+        }
+        p.info {
+            padding: 0.5em;
+            border: 1px #666666 solid;
+            width: 45em;
+            background-color: #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+<h1>API Sample Code</h1>
+<p class="info">Services names that are in <em>italics</em> will require user credentials in the HTTP header.</p>
+<form method="post" action="index.php">
+    <h2>REST Based Services</h2>
+    <ul class="auth">
+        <li><label><input type="radio" name="methodName" value="GetFamilyTreeREST">GetFamilyTree</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyDetailSimpleREST">GetCompanyDetailSimple</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyDetailREST">GetCompanyDetail</label></li>
+        <li><label><input type="radio" name="methodName" value="GetPersonDetailREST">GetPersonDetail</label></li>
+        <li><label><input type="radio" name="methodName" value="FindCompanyByKeywordGetREST">FindCompanyByKeyword (GET)</label></li>
+        <li><label><input type="radio" name="methodName" value="FindCompanyByKeywordPostREST">FindCompanyByKeyword (POST)</label></li>
+        <li><label><input type="radio" name="methodName" value="AdvancedCompanySearchPostREST">AdvancedCompanySearch (POST)</label></li>
+        <li><label><input type="radio" name="methodName" value="AdvancedPersonSearchPostREST">AdvancedPersonSearch (POST)</label></li>
+    </ul>
+    <h2>SOAP Based Services</h2>
+    <ul>
+        <li><label><input type="radio" name="methodName" value="GetFamilyTree">GetFamilyTree</label></li>
+        <li><label><input type="radio" name="methodName" value="GetAdvancedSearchLookups">GetAdvancedSearchLookups</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyDetail">GetCompanyDetail</label></li>
+        <li><label><input type="radio" name="methodName" value="GetPersonDetail">GetPersonDetail</label></li>
+        <li><label><input type="radio" name="methodName" value="FindCompetitorsByCompanyID">FindCompetitorsByCompanyID</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyFinancialSummary">GetCompanyFinancialSummary</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyDetailSimple">GetCompanyDetailSimple</label></li>
+        <li><label><input type="radio" name="methodName" value="GetPersonDetailSimple">GetPersonDetailSimple</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyMarketData">GetCompanyMarketData</label></li>
+        <li><label><input type="radio" name="methodName" value="FindCompanyByKeyword">FindCompanyByKeyword</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyComparisonData">GetCompanyComparisonData</label></li>
+        <li><label><input type="radio" name="methodName" value="AdvancedCompanySearch">AdvancedCompanySearch</label></li>
+        <li><label><input type="radio" name="methodName" value="AdvancedPersonSearch">AdvancedPersonSearch</label></li>
+        <li><label><input type="radio" name="methodName" value="FindPersonByKeyword">FindPersonByKeyword</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCallPrepSheet">GetCallPrepSheet</label></li>
+        <li><label><input type="radio" name="methodName" value="FindIndustryByKeyword">FindIndustryByKeyword</label></li>
+        <li><label><input type="radio" name="methodName" value="AdvancedIndustrySearch">AdvancedIndustrySearch</label></li>
+        <li><label><input type="radio" name="methodName" value="GetIndustry">GetIndustry</label></li>
+        <li><label><input type="radio" name="methodName" value="GetIndustryForStateProvince">GetIndustryForStateProvince</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyNews">GetCompanyNews</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCompanyFinancialDetail">GetCompanyFinancialDetail</label></li>
+        <li><label><input type="radio" name="methodName" value="AdvancedCompanySearchOptionalData">AdvancedCompanySearchOptionalData</label></li>
+        <li><label><input type="radio" name="methodName" value="GetMarketAnalysisReport">GetMarketAnalysisReport</label></li>
+        <li><label><input type="radio" name="methodName" value="FindCompanyMatch">FindCompanyMatch</label></li>
+    </ul>
+    <ul class="auth">
+        <li><label><input type="radio" name="methodName" value="CreateUserNote">CreateUserNote</label></li>
+        <li><label><input type="radio" name="methodName" value="UpdateUserNote">UpdateUserNote</label></li>
+        <li><label><input type="radio" name="methodName" value="DeleteUserNote">DeleteUserNote</label></li>
+        <li><label><input type="radio" name="methodName" value="GetUserNote">GetUserNote</label></li>
+        <li><label><input type="radio" name="methodName" value="FindUserNotes">FindUserNotes</label></li>
+        <li><label><input type="radio" name="methodName" value="GetCreditCounts">GetCreditCounts</label></li>
+        <li><label><input type="radio" name="methodName" value="CreateUserContact">CreateUserContact</label></li>
+        <li><label><input type="radio" name="methodName" value="UpdateUserContact">UpdateUserContact</label></li>
+        <li><label><input type="radio" name="methodName" value="FindUserContacts">FindUserContacts</label></li>
+        <li><label><input type="radio" name="methodName" value="GetUserContact">GetUserContact</label></li>
+        <li><label><input type="radio" name="methodName" value="DeleteUserContact">DeleteUserContact</label></li>
+    </ul>
+
+    <h3>User Credentials</h3>
+    <p>Please enter a username and password for services that require user credentials in the HTTP header.</p>
+    <p>
+        <label>Username:&nbsp;<input name="username"></label>
+        <label>Password:&nbsp;<input name="password"></label>
+    </p>
+    <input type="submit" value="Submit">
+</form>
+<?php
+    $COMPANY_ID = 13193000000000;
+    $OFFICIAL_ID = 1240058000000000;
+    $NOTE_TEXT = 'Sample Note Text';
+    $NOTE_DATE = '2010-05-21';
+    $NOTE_ID = 48135481;
+    $BASE_URL =      "http://dnbdirect-api.dnb.com/DnBAPI-10";
+    //$REST_ENDPOINT = $BASE_URL . "/rest/";
+    $REST_ENDPOINT = "http://dnbdirect-sandbox.dnb.com/DnBAPI-11/rest/";
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        print($_POST['methodName']);
+        try
+        {
+            $url = $BASE_URL;
+            //Create your SoapClient and point to dnbAPI.wsdl
+            $client = new SoapClient(
+                $url . '/dnbAPI/dnbAPI.wsdl',
+                array('trace' => true, 'exceptions' => true, 'location' => $url)
+            );
+
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $headers = array();
+            $api_key = "dn6hbdfptjt9wrxt5rssmk9m";
+
+            // CREATE API KEY HEADER
+            if ($username == '' && $password == '')
+            {
+                // Add only API-KEY header if authentication is not needed.
+                $headers[] = new SoapHeader('http://webservice.dnb.com', 'API-KEY', $api_key);
+            }
+            else
+            {
+                //To invoke authentication, add username & password headers (in addition to API-KEY header)
+                $headers = array (new SoapHeader('http://webservice.dnb.com', 'API-KEY', $api_key),
+                new SoapHeader('http://webservice.dnb.com', 'username', $username),
+                new SoapHeader('http://webservice.dnb.com', 'password', $password));
+            }
+
+            $client->__setSoapHeaders($headers);
+            //HEADERS END HERE
+
+            //Call the chosen web service
+            if($_POST['methodName'] == 'GetFamilyTree')
+            {
+                $parameters = array(
+                    //Note: Please change "uniqueId" to a valid value in the DB
+                    "uniqueId" => 59101000000000,
+                    "filters" => array(
+                        "city" => "Mountain View",
+                        "state" => "CA",
+                        "country" => "United States",
+                        "locationType" => "HEADQUARTERS"
+                        )
+                );
+            }
+            elseif($_POST['methodName'] == 'GetAdvancedSearchLookups')
+            {
+                $parameters = array();
+            }
+            elseif($_POST['methodName'] == 'GetCompanyDetail')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetPersonDetail')
+            {
+                $parameters = array(
+                    "uniqueCompanyId" => $COMPANY_ID,
+                    "coOfficialId" => $OFFICIAL_ID,
+                    "covertCurrencyTo" => 'USD'
+                );
+            }
+            elseif($_POST['methodName'] == 'FindCompetitorsByCompanyID')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCompanyFinancialSummary')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCompanyDetailSimple')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetPersonDetailSimple')
+            {
+                $parameters = array(
+                    "uniqueCompanyId" => $COMPANY_ID,
+                    "coOfficialId" => $OFFICIAL_ID,
+                    "covertCurrencyTo" => 'USD'
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCompanyMarketData')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetMarketAnalysisReport')
+            {
+                $parameters = array(
+                    "uniqueId" => 58444000000000
+                );
+            }
+            elseif($_POST['methodName'] == 'FindCompanyMatch')
+            {
+                $parameters = array(
+                    "DUNSNumber" => 001368083
+                    );
+            }
+            elseif($_POST['methodName'] == 'FindCompanyByKeyword')
+            {
+                //Create find company by keyword params
+                $parameters = array(
+                    "keyword" => 'Hoover\'s Inc',
+                    "returnSearchNavigation" => true,
+                    "searchNavigation" => array(
+                        "companyTypeSearchNavigation" => array(
+                            "companyTypeSearchNavigationValue" => 1
+                        )
+                    )
+                );
+
+            }
+            elseif($_POST['methodName'] == 'AdvancedCompanySearch')
+            {
+                $parameters = array(
+                    "bal" => array(
+                        "maxRecords" => 20,
+                        "orderBy" => 'CityName',
+                        "returnSearchNavigation" => true,
+                        "sortDirection" => 'Ascending',
+                        "companySize" => array(
+                            "employeesFrom" => 10
+                        ),
+                        "companyType" => array(
+                            "locationType" => '1'
+                        ),
+                        "financialData" => array(
+                            "incomeFrom" => '100'
+                        ),
+                        "industry" => array(
+                            "primaryOnly" => true,
+                            "nAICS" => '511110'
+                        ),
+                        "location" => array(
+                            "countryId" => 76
+                        ),
+                        "specialtyCriteria" => array(
+                            "exchangeId" =>1
+                        )
+                    )
+                );
+            }
+            elseif($_POST['methodName'] == 'AdvancedCompanySearchOptionalData')
+            {
+                $parameters = array(
+                    "bal" => array(
+                        "maxRecords" => 20,
+                        "orderBy" => 'CityName',
+                        "returnSearchNavigation" => true,
+                        "sortDirection" => 'Ascending',
+                        "companySize" => array(
+                            "employeesFrom" => 10
+                        ),
+                        "companyType" => array(
+                            "locationType" => '1'),
+                        "optionalResponseFields" => array(
+                            "includeGeoLocationInfo" => true,
+                            "includeHistoricalInfo" => true,
+                            "includeExchangeInfo" => true)
+                    )
+                );
+            }
+            elseif($_POST['methodName'] == 'AdvancedPersonSearch')
+            {
+                $parameters = array(
+                    "bal" => array(
+                        "companySize" => array(
+                            "employeesFrom" => 10,
+                            "employeesTo" => 100
+                        ),
+                        "companyType" => array(
+                            "companyType" => '1'
+                        ),
+                        "industry" => array(
+                            "primaryOnly" => true,
+                            "nAICS" => '511210'
+                        ),
+                        "location" => array(
+                            "city" => 'Dallas'
+                        ),
+                        "financialData" => array(
+                            "assetsFrom" => 5
+                        ),
+                        "specialtyCriteria" => array(
+                            "exchangeId" =>2
+                        ),
+                        "people" => array(
+                            "ageFrom" => 40,
+                            "bonusFrom"=>1000.44445
+                        )
+                    )
+                );
+            }
+            elseif($_POST['methodName'] == 'FindPersonByKeyword')
+            {
+                $parameters = array(
+                    "keyword" => 'Gates',
+                    "returnSearchNavigation" => true,
+                    "searchNavigation" => array(
+                        "jobFunctionSearchNavigation" => array(
+                            "jobFunctionSearchNavigationValue" => '^120$'
+                        )
+                    )
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCallPrepSheet')
+            {
+                $parameters = array(
+                    "hooversIndustryCode" => '1020'
+                );
+            }
+            elseif($_POST['methodName'] == 'FindIndustryByKeyword')
+            {
+                $parameters = array(
+                    "keyword" => 'hair',
+                    "orderBy" => 'IndustryName',
+                    "premiumIndustryOnly" => true
+                );
+            }
+            elseif($_POST['methodName'] == 'AdvancedIndustrySearch')
+            {
+                $parameters = array(
+                    "uSSIC" => array("32"),
+                    "nAICS" => array("32"),
+                    "uKSIC" => array("26"),
+                    "orderBy" => 'IndustryName'
+                );
+
+            }
+            elseif($_POST['methodName'] == 'GetIndustry')
+            {
+                $parameters = array(
+                    "hooversIndustryCode" => '1020',
+                    "chapters" => array(
+                        "chapterName" => 'All'
+                    )
+                );
+            }
+            elseif($_POST['methodName'] == 'GetIndustryForStateProvince')
+            {
+                $parameters = array(
+                    "stateId" => 'TX'
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCompanyComparisonData')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCompanyNews')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCompanyFinancialDetail')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID
+                );
+            }
+            elseif($_POST['methodName'] == 'CreateUserNote')
+            {
+
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID,
+                    "noteText" => $NOTE_TEXT,
+                    "noteDate" => $NOTE_DATE
+
+                );
+            }
+             elseif($_POST['methodName'] == 'UpdateUserNote')
+            {
+                $parameters = array(
+                    "noteId" => $NOTE_ID,
+                    "noteText" => $NOTE_TEXT,
+                    "noteDate" => $NOTE_DATE
+
+                );
+            }
+             elseif($_POST['methodName'] == 'DeleteUserNote')
+            {
+                $parameters = array(
+                    "noteId" => $NOTE_ID
+
+                );
+            }
+            elseif($_POST['methodName'] == 'GetUserNote')
+            {
+                $parameters = array(
+                    "noteId" => $NOTE_ID
+
+                );
+            }
+            elseif($_POST['methodName'] == 'FindUserNotes')
+            {
+                $parameters = array(
+                    "uniqueId" => $COMPANY_ID,
+                    "dateFrom" => '2010-05-20',
+                    "dateTo"   => '2010-05-25',
+                    "maxRecords" => 20,
+                    "hitOffset"  => 0
+                );
+            }
+            elseif($_POST['methodName'] == 'CreateUserContact')
+            {
+                $parameters = array(
+                     "CoOfficialInfo" => array(
+                    "uniqueId" => $COMPANY_ID,
+                    "coOfficialId" => $OFFICIAL_ID
+                     )
+                );
+            }
+
+            elseif($_POST['methodName'] == 'GetUserContact')
+            {
+                $parameters = array(
+                    "contactId" => 112,
+                    );
+            }
+
+            elseif($_POST['methodName'] == 'DeleteUserContact')
+            {
+                $parameters = array(
+                    "contactId" => 112,
+                    );
+            }
+
+
+            elseif($_POST['methodName'] == 'UpdateUserContact')
+            {
+                $parameters = array(
+                   "CoOfficialInfo" => array(
+                             "uniqueId" => $COMPANY_ID,
+                             "coOfficialId" => $OFFICIAL_ID
+                         )
+                );
+            }
+             elseif($_POST['methodName'] == 'FindUserContacts')
+            {
+                $parameters = array(
+                    "maxRecords" => 20,
+                    "hitOffset" => 0,
+                    "companyName"=>'Dell'
+                );
+            }
+            elseif($_POST['methodName'] == 'AdvancedCompanySearchPinnacle')
+            {
+                $parameters = array(
+                    "simpleBal" => array(
+                        "sectionId" => 0,
+                        "companySize" => array(
+                            "employeesFrom" => 10
+                        ),
+                        "companyType" => array(
+                            "locationType" => '1'
+                        ),
+                        "financialData" => array(
+                            "incomeFrom" => '100'
+                        ),
+                        "industry" => array(
+                            "primaryOnly" => true
+                        ),
+                        "location" => array(
+                            "countryId" => 76
+                        ),
+                        "specialtyCriteria" => array(
+                            "exchangeId" =>1
+                        )
+                    )
+                );
+            }
+            elseif($_POST['methodName'] == 'GetCreditCounts')
+            {
+                $parameters = array();
+            }
+            elseif($_POST['methodName'] == 'GetFamilyTreeREST')
+            {            
+                $request = $REST_ENDPOINT . 'company/familytree/13193000000000';
+                $content = '{"city": ["Round Rock"], "state" : ["TX"], "country": [ "United States" ], "locationType": ["HEADQUARTERS"] }';
+                do_post($request, $content);
+                return;
+            }
+            elseif($_POST['methodName'] == 'GetCompanyDetailSimpleREST') {
+                $request = $REST_ENDPOINT .'company/13193000000000?view=simple';
+                $response = file_get_contents($request,false, $context);
+                do_dump($response);
+                return;
+            }
+            elseif($_POST['methodName'] == 'GetCompanyDetailREST') {
+                $request = $REST_ENDPOINT ."company/13193000000000?view=full";
+                $response = file_get_contents($request,false, $context);
+                do_dump($response);
+                return;
+            }
+            elseif($_POST['methodName'] == 'GetPersonDetailREST') {
+                $request = $REST_ENDPOINT ."person/13193000000000/1240089000000000?connectMail=false&convertCurrencyTo=USD&view=full";
+                $response = file_get_contents($request,false, $context);
+                do_dump($response);
+                return;
+            }
+            elseif($_POST['methodName'] == 'FindCompanyByKeywordGetREST') {
+                $request = $REST_ENDPOINT ."search/company/Dell?max_records=1";
+                do_get($request);
+                return;
+            }
+            elseif($_POST['methodName'] == 'FindCompanyByKeywordPostREST') {
+                $request = $REST_ENDPOINT ."search/company/Dell?max_records=5";
+                $content = '{"locationTypeSearchNavigation":{"locationTypeSearchNavigationValue":["2"]}}';
+                do_post($request, $content);
+                return;
+            }
+            elseif($_POST['methodName'] == 'AdvancedCompanySearchPostREST') {
+                $request = $REST_ENDPOINT . "search/company/advanced?sort_direction=ascending&order_by=company_name&max_records=10";
+                $content = '{"specialtyCriteria":{"companyKeyword":"Dell"}}';
+                do_post($request, $content);
+                return;
+            }
+            elseif($_POST['methodName'] == 'AdvancedPersonSearchPostREST') {
+                $request = $REST_ENDPOINT . "search/person/advanced?order_by=company_name&max_records=10";
+                $content = '{"specialtyCriteria":{"companyKeyword":"Dell"}}';
+                do_post($request, $content);
+                return;
+            }            //Use __soapCall instead of directly calling the method,
+            //as we must pass the API-KEY in the Header
+            $result = $client->__soapCall($_POST['methodName'],
+                                        array($parameters),
+                                        NULL    );
+
+            print_r($_COOKIE);
+
+            //Now that you have the result data, use it
+            //The data will come back as an object using the names defined in the WSDL
+            dump($result);
+        }
+        catch (Exception $e)
+        {
+            print($e);
+            print($client->__getLastRequest());
+        }
+    }
+
+    function do_get($request) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $opts = array(
+              'http'=>array(
+                'method'=>"GET",
+                'header'=>"username: " . $username . "\r\n" .
+                          "password: " . $password
+              )
+            );
+        $context = stream_context_create($opts);
+
+        $response = file_get_contents($request,false, $context);
+        do_dump($response);
+    }
+
+    function do_post($request, $content) {
+        print($request);
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $opts = array(
+            'http' => array(
+              'method' => "POST",
+              'ignore_errors' => true,
+              'header' => "Accept: application/json\r\n" .
+                          "Content-type: application/json\r\n" .
+                          "username: " . $username . "\r\n" .
+                          "password: " . $password,
+              'content' => $content
+            )
+        );
+        $context  = stream_context_create($opts);
+        $fp = fopen($request, 'rb', false, $context);
+        if (!$fp) {
+            $response = "There was a problem calling the service.";
+        } else {
+            $response = stream_get_contents($fp);
+        }
+        do_dump($response);
+    }
+
+    /////////////////
+    // Much thanks to the group on php.net
+    // Specific code taken from http://us3.php.net/manual/en/function.var-dump.php#80288
+    ////////////////
+
+    ////////////////////////////////////////////////////////
+    // Function:         dump
+    // Inspired from:     PHP.net Contributions
+    // Description: Helps with php debugging
+
+    function dump(&$var, $info = FALSE)
+    {
+        $scope = false;
+        $prefix = 'unique';
+        $suffix = 'value';
+
+        if($scope) $vals = $scope;
+        else $vals = $GLOBALS;
+
+        $old = $var;
+        $var = $new = $prefix.rand().$suffix; $vname = FALSE;
+        foreach($vals as $key => $val) if($val === $new) $vname = $key;
+        $var = $old;
+
+        echo "<pre style='margin: 0px 0px 10px 0px; display: block; background: white; color: black; font-family: Verdana; border: 1px solid #cccccc; padding: 5px; font-size: 10px; line-height: 13px;'>";
+        if($info != FALSE) echo "<b style='color: red;'>$info:</b><br>";
+        do_dump($var, '$'.$vname);
+        echo "</pre>";
+    }
+
+    ////////////////////////////////////////////////////////
+    // Function:         do_dump
+    // Inspired from:     PHP.net Contributions
+    // Description: Better GI than print_r or var_dump
+
+    function do_dump(&$var, $var_name = NULL, $indent = NULL, $reference = NULL)
+    {
+        $do_dump_indent = "<span style='color:#eeeeee;'>|</span> &nbsp;&nbsp; ";
+        $reference = $reference.$var_name;
+        $keyvar = 'the_do_dump_recursion_protection_scheme'; $keyname = 'referenced_object_name';
+
+        if (is_array($var) && isset($var[$keyvar]))
+        {
+            $real_var = &$var[$keyvar];
+            $real_name = &$var[$keyname];
+            $type = ucfirst(gettype($real_var));
+            echo "$indent$var_name <span style='color:#a2a2a2'>$type</span> = <span style='color:#e87800;'>&amp;$real_name</span><br>";
+        }
+        else
+        {
+            $var = array($keyvar => $var, $keyname => $reference);
+            $avar = &$var[$keyvar];
+
+            $type = ucfirst(gettype($avar));
+            if($type == "String") $type_color = "<span style='color:green'>";
+            elseif($type == "Integer") $type_color = "<span style='color:red'>";
+            elseif($type == "Double"){ $type_color = "<span style='color:#0099c5'>"; $type = "Float"; }
+            elseif($type == "Boolean") $type_color = "<span style='color:#92008d'>";
+            elseif($type == "NULL") $type_color = "<span style='color:black'>";
+
+            if(is_array($avar))
+            {
+                $count = count($avar);
+                echo "$indent" . ($var_name ? "$var_name => ":"") . "<span style='color:#a2a2a2'>$type ($count)</span><br>$indent(<br>";
+                $keys = array_keys($avar);
+                foreach($keys as $name)
+                {
+                    $value = &$avar[$name];
+                    do_dump($value, "['$name']", $indent.$do_dump_indent, $reference);
+                }
+                echo "$indent)<br>";
+            }
+            elseif(is_object($avar))
+            {
+                echo "$indent$var_name <span style='color:#a2a2a2'>$type</span><br>$indent(<br>";
+                foreach($avar as $name=>$value) do_dump($value, "$name", $indent.$do_dump_indent, $reference);
+                echo "$indent)<br>";
+            }
+            elseif(is_int($avar)) echo "$indent$var_name = <span style='color:#a2a2a2'>$type(".strlen($avar).")</span> $type_color$avar</span><br>";
+            elseif(is_string($avar)){
+                 if($var_name != 'report') {
+                      echo "$indent$var_name = <span style='color:#a2a2a2'>$type(".strlen($avar).")</span> $type_color\"$avar\"</span><br>";
+                 } else {
+                       $ourFileName = "/MarketAnalysisReport.PDF";
+                       echo "PDF File Location:" .$ourFileName;
+                       $ourFileHandle = fopen($ourFileName, 'w') or die("can't open file");
+                       fwrite( $ourFileHandle, $avar);
+                       fclose($ourFileHandle);
+                 }
+             }
+            elseif(is_float($avar)) echo "$indent$var_name = <span style='color:#a2a2a2'>$type(".strlen($avar).")</span> $type_color$avar</span><br>";
+            elseif(is_bool($avar)) echo "$indent$var_name = <span style='color:#a2a2a2'>$type(".strlen($avar).")</span> $type_color".($avar == 1 ? "TRUE":"FALSE")."</span><br>";
+            elseif(is_null($avar)) echo "$indent$var_name = <span style='color:#a2a2a2'>$type(".strlen($avar).")</span> {$type_color}NULL</span><br>";
+            else echo "$indent$var_name = <span style='color:#a2a2a2'>$type(".strlen($avar).")</span> $avar<br>";
+
+            $var = $var[$keyvar];
+        }
+    }
+?>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.comp-tree{
+}
+
+.comp-item{
+    margin:10px;
+    border:solid 1px;
+}
+
+.competitors-label {
+    background-color: #DDDDDD;
+    color: blue;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    padding: 3px;
+    width: 150px;
+}
+
+.competitors-label:hover {
+    background-color: #AAA;
+}
+    
+.comp-name{
+  background-color:#AE8BCE;  
+}
+
+.comp-duns{
+   background-color:#D6B477; 
+}
+
+.comp-id{
+   background-color:#77D68A; 
+}
+
+.com-competitors{
+    
+}
+
+.com-competitors-wrapper{
+    margin-left:50px;
+}
